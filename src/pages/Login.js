@@ -24,16 +24,17 @@ const Login = () => {
   const checkLogin = () => checkEmail(email) && checkPassword(password);
 
   return (
-    <main className="h-screen bg-gray-100 flex flex-col justify-center px-16">
-      <section className="flex"> 
-        <section className="flex flex-col w-1/2 bg-blue-200 rounded p-6">
+    <main className="h-screen bg-gray-100 flex flex-col justify-center px-20">
+      <section className="h-4/5 flex shadow-lg"> 
+        <section className="flex flex-col items-center gap-2 w-1/2 bg-white rounded p-6">
           <input
-            className=""
+            className="w-3/5 p-2 text-lg outline-none border-2 border-green-100 rounded-lg"
             type="email"
             data-testid="email-input"
             onChange={ (e) => setEmail(e.target.value) }
           />
           <input
+            className="w-3/5 p-2 text-lg outline-none border-2 border-green-100 rounded-lg"
             type="password"
             data-testid="password-input"
             onChange={ (e) => setPassword(e.target.value) }
@@ -43,7 +44,7 @@ const Login = () => {
           </button>
         </section>
 
-        <section className="bg-red-200 w-1/2 rounded p-6">
+        <section className="flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6">
           <img src={walletSvg} alt="wallet" />
         </section>
       </section>
