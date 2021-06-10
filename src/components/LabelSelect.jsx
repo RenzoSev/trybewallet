@@ -1,22 +1,22 @@
 import React from 'react';
 import { string, shape, func } from 'prop-types';
+import styles from '../styles/tailwindStyles';
 
 const LabelSelect = (props) => {
   const { select, options, getExpense } = props;
-  const { text, control, testid } = select;
+  const { text, control } = select;
 
   return (
     <label htmlFor={ control }>
-      {text}
-
       <select
+        className={styles.walletStyles.select}
         id={ control }
         name={ control }
         onChange={ getExpense }
-        data-testid={ testid }
       >
+        <option disabled>{text}</option>
         {options.map((value) => (
-          <option key={ value } data-testid={ value }>
+          <option key={ value }>
             {value}
           </option>
         ))}

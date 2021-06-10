@@ -1,21 +1,21 @@
 import React from 'react';
 import { string, shape, func } from 'prop-types';
+import styles from '../styles/tailwindStyles';
 
 const LabelInput = (props) => {
   const { input, getExpense } = props;
   const { text, type, control, testid } = input;
 
   return (
-    <label htmlFor={ control }>
-      {text}
       <input
+        className={styles.walletStyles.input}
         type={ type }
         id={ control }
         name={ control }
         onChange={ getExpense }
         data-testid={ testid }
+        placeholder={text}
       />
-    </label>
   );
 };
 

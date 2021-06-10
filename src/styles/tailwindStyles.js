@@ -32,6 +32,14 @@ const styles = {
     base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
     container: 'h-4/5 flex flex-col shadow-lg bg-white',
     header: 'flex justify-between items-center py-5 px-8',
+    input: `
+    text-sm p-2 w-2/12 outline-none 
+    border border-purple-300 text-gray-600 rounded-lg`,
+    select: 'p-2 rounded-lg text-gray-100 text-sm bg-purple-400 shadow',
+    form: 'flex justify-between py-5 pl-5 pr-8 border-b border-t',
+    button: `
+    bg-green-400 text-gray-700 px-5 
+    rounded-lg hover:bg-green-300 hover:text-gray-600 shadow`,
   },
 }
 

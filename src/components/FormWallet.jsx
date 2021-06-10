@@ -7,8 +7,11 @@ import LabelSelect from './LabelSelect';
 import elements from '../services/inputs';
 import initialExpense from '../services/initialExpense';
 import { fetchExpenses, fetchCurrency } from '../actions';
+import styles from '../styles/tailwindStyles';
 
 const FormWallet = () => {
+  const { walletStyles } = styles;
+  
   const [expense, setExpense] = useState(initialExpense);
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
@@ -33,21 +36,27 @@ const FormWallet = () => {
   }, []);
 
   return (
-    <form className="py-5 px-8 bg-purple-500">
-      {inputs.map((input) => (
-        <LabelInput key={ input.control } input={ input } getExpense={ getExpense } />
-      ))}
+    <form className={walletStyles.form}>
+      <div className="flex justify-around">
+        {inputs.map((input) => (
+          <LabelInput key={ input.control } input={ input } getExpense={ getExpense } />
+        ))}
 
-      {selects.map((select, index) => (
-        <LabelSelect
-          key={ select.control }
-          select={ select }
-          options={ updatedOptions[index] }
-          getExpense={ getExpense }
-        />
-      ))}
+        {selects.map((select, index) => (
+          <LabelSelect
+            key={ select.control }
+            select={ select }
+            options={ updatedOptions[index] }
+            getExpense={ getExpense }
+          />
+        ))}
+      </div>
 
-      <button type="button" onClick={ () => dispatch(fetchExpenses(expense)) }>
+      <button 
+        type="button" 
+        onClick={ () => dispatch(fetchExpenses(expense)) }
+        className={walletStyles.button}
+      >
         Adicionar despesa
       </button>
     </form>

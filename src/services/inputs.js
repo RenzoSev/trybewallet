@@ -17,17 +17,14 @@ const elements = {
     {
       control: 'currency',
       text: 'Moeda',
-      testid: 'currency-input',
     },
     {
       control: 'method',
       text: 'Método de pagamento',
-      testid: 'method-input',
     },
     {
       control: 'tag',
       text: 'Tag',
-      testid: 'tag-input',
     },
   ],
   options: [
