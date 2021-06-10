@@ -33,7 +33,7 @@ const FormWallet = () => {
   }, []);
 
   return (
-    <form>
+    <form className="py-5 px-8 bg-purple-500">
       {inputs.map((input) => (
         <LabelInput key={ input.control } input={ input } getExpense={ getExpense } />
       ))}

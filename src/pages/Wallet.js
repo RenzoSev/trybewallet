@@ -4,8 +4,13 @@ import EditFormWallet from '../components/EditFormWallet';
 
 import FormWallet from '../components/FormWallet';
 import Table from '../components/Table';
+import TrybeWalletHeader from '../components/TrybeWalletHeader';
+
+import styles from '../styles/tailwindStyles';
 
 const Wallet = () => {
+  const { walletStyles } = styles;
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   const globalState = useSelector((state) => state);
@@ -16,7 +21,7 @@ const Wallet = () => {
       const totalPriceRedux = wallet.expenses.reduce((acc, expense) => {
         const { value, currency, exchangeRates } = expense;
         const { ask } = exchangeRates[currency];
-        const total = acc + (ask * value);
+        const total = acc + ask * value;
         return total;
       }, 0);
 
@@ -27,17 +32,21 @@ const Wallet = () => {
   }, [wallet.expenses]);
 
   return (
-    <section>
-      <header>
-        <div>
-          <p data-testid="email-field">{user.email}</p>
-          <p data-testid="total-field">{totalPrice}</p>
-          <p data-testid="header-currency-field">BRL</p>
-        </div>
-      </header>
-      {wallet.edit ? <EditFormWallet /> : <FormWallet />}
-      <Table />
-    </section>
+    <main className={walletStyles.base}>
+      <section className={walletStyles.container}>
+        <header className={walletStyles.header}>
+          <TrybeWalletHeader />
+          <div className="flex gap-12">
+            <p className="text-gray-600" data-testid="email-field">{user.email}</p>
+            <p className="text-green-500" data-testid="total-field">
+              {`Dispesa total: R$${totalPrice} BRL`}
+            </p>
+          </div>
+        </header>
+        {wallet.edit ? <EditFormWallet /> : <FormWallet />}
+        <Table />
+      </section>
+    </main>
   );
 };
 
