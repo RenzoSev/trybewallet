@@ -35,11 +35,13 @@ const styles = {
     input: `
     text-sm p-2 w-2/12 outline-none 
     border border-purple-300 text-gray-600 rounded-lg`,
-    select: 'p-2 rounded-lg text-gray-100 text-sm bg-purple-400 shadow',
+    select: `
+    p-2 rounded-lg text-gray-100 appearance-none
+    text-sm bg-purple-400 shadow outline-none cursor-pointer`,
     form: 'flex justify-between py-5 pl-5 pr-8 border-b border-t',
     button: `
-    bg-green-400 text-gray-700 px-5 
-    rounded-lg hover:bg-green-300 hover:text-gray-600 shadow`,
+    bg-green-400 text-gray-600 px-5 font-bold outline-none focus:outline-none
+    rounded-lg hover:bg-green-300 hover:text-gray-500 shadow`,
   },
 }
 

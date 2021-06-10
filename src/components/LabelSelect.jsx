@@ -14,7 +14,7 @@ const LabelSelect = (props) => {
         name={ control }
         onChange={ getExpense }
       >
-        <option disabled>{text}</option>
+        <option disabled selected>{text}</option>
         {options.map((value) => (
           <option key={ value }>
             {value}
