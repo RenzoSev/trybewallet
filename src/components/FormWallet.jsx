@@ -6,7 +6,8 @@ import LabelSelect from './LabelSelect';
 
 import elements from '../services/inputs';
 import initialExpense from '../services/initialExpense';
-import { fetchExpenses, fetchCurrency } from '../actions';
+import { fetchCurrency } from '../store/actions/wallet/currency';
+import { fetchExpenses } from '../store/actions/wallet/expense';
 import styles from '../styles/tailwindStyles';
 
 const FormWallet = () => {

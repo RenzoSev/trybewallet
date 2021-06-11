@@ -34,10 +34,10 @@ const elements = {
   th: [
     'Descrição',
     'Tag',
-    'Método de pagamento',
+    'Pagamento',
     'Valor',
     'Moeda',
-    'Câmbio utilizado',
+    'Câmbio',
     'Valor convertido',
     'Moeda de conversão',
     'Editar/Excluir',

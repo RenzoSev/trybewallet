@@ -19,14 +19,16 @@ const styles = {
     flex flex-col items-center 
     justify-evenly w-1/2 bg-white rounded p-6
     `,
-    leftContainerInputs: 'flex flex-col items-center justify-around gap-6 w-full',
+    leftContainerInputs:
+      'flex flex-col items-center justify-around gap-6 w-full',
     leftContainerButton: `
     w-3/5 p-3 bg-purple-500 rounded-xl text-md 
     text-white shadow tracking-tight font-medium 
     transition-all hover:bg-purple-400 outline:none
     `,
     input: (value) => checkLength(value),
-    rightContainer: 'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
+    rightContainer:
+      'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
   },
   walletStyles: {
     base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
@@ -34,15 +36,26 @@ const styles = {
     header: 'flex justify-between items-center py-5 px-8',
     input: `
     text-sm p-2 w-2/12 outline-none 
-    border border-purple-300 text-gray-600 rounded-lg`,
+    border border-purple-300 text-gray-600 rounded-lg
+    `,
+    label:
+      'p-2 rounded-lg flex items-center gap-2 bg-purple-400 shadow cursor-pointer',
     select: `
-    p-2 rounded-lg text-gray-100 appearance-none
-    text-sm bg-purple-400 shadow outline-none cursor-pointer`,
+    text-gray-100 appearance-none text-sm bg-purple-400 outline-none cursor-pointer
+    `,
     form: 'flex justify-between py-5 pl-5 pr-8 border-b border-t',
     button: `
-    bg-green-400 text-gray-600 px-5 font-bold outline-none focus:outline-none
-    rounded-lg hover:bg-green-300 hover:text-gray-500 shadow`,
+    bg-green-400 text-gray-100 px-5 font-bold outline-none focus:outline-none
+    rounded-lg hover:bg-green-300 transition-all hover:text-gray-50 shadow
+    `,
+    table: 'text-gray-600 text-sm w-full border-separate',
+    td: 'px-4 text-center',
+    buttonEditDelete: (color) =>
+      `
+      text-${color}-400 hover:text-${color}-300 transition-all 
+      outline-none focus:outline-none focus:border-none
+      `,
   },
-}
+};
 
 export default styles;

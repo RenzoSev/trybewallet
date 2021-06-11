@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiEdit, FiDelete } from 'react-icons/fi';
-import { deleteExpense, editExpenses } from '../actions';
+import { deleteExpense, editExpenses } from '../store/actions/wallet/expense';
 import styles from '../styles/tailwindStyles';
 
 const TBody = () => {

@@ -5,7 +5,8 @@ import LabelInput from './LabelInput';
 import LabelSelect from './LabelSelect';
 
 import elements from '../services/inputs';
-import { deleteExpense, editExpenses, fetchCurrency } from '../actions';
+import { deleteExpense, editExpenses } from '../store/actions/wallet/expense';
+import { fetchCurrency } from '../store/actions/wallet/currency';
 
 const EditFormWallet = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,10 @@ const EditFormWallet = () => {
   const updatedOptions = [wallet.currencies, ...options];
 
   const editExpense = () => {
-    const newExpenses = [...wallet.expenses
-      .filter(({ id }) => id !== wallet.id), expense].sort((a, b) => a.id - b.id);
+    const newExpenses = [
+      ...wallet.expenses.filter(({ id }) => id !== wallet.id),
+      expense,
+    ].sort((a, b) => a.id - b.id);
     dispatch(deleteExpense(newExpenses));
     dispatch(editExpenses(false));
   };
@@ -37,17 +40,17 @@ const EditFormWallet = () => {
   return (
     <form>
       {inputs.map((input) => (
-        <LabelInput key={ input.control } input={ input } getExpense={ getExpense } />
+        <LabelInput key={input.control} input={input} getExpense={getExpense} />
       ))}
       {selects.map((select, index) => (
         <LabelSelect
-          key={ select.control }
-          select={ select }
-          options={ updatedOptions[index] }
-          getExpense={ getExpense }
+          key={select.control}
+          select={select}
+          options={updatedOptions[index]}
+          getExpense={getExpense}
         />
       ))}
-      <button type="button" onClick={ () => editExpense() }>
+      <button type="button" onClick={() => editExpense()}>
         Editar despesa
       </button>
     </form>

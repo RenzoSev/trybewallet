@@ -23,7 +23,7 @@ const Wallet = () => {
         const { ask } = exchangeRates[currency];
         const total = acc + ask * value;
         return total;
-      }, 0);
+      }, 0).toFixed(2);
 
       setTotalPrice(totalPriceRedux);
     };
@@ -37,7 +37,9 @@ const Wallet = () => {
         <header className={walletStyles.header}>
           <TrybeWalletHeader />
           <div className="flex gap-12">
-            <p className="text-gray-600" data-testid="email-field">{user.email}</p>
+            <p className="text-gray-600" data-testid="email-field">
+              {user.email}
+            </p>
             <p className="text-green-500" data-testid="total-field">
               {`Dispesa total: R$${totalPrice} BRL`}
             </p>

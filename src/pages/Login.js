@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
-import { userLogin } from '../actions';
+import { userLogin } from '../store/actions/user';
 import { checkEmail, checkPassword } from '../utils/login';
 
 import walletSvg from '../assets/wallet.svg';
