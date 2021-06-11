@@ -15,6 +15,8 @@ const LabelInput = (props) => {
         onChange={ getExpense }
         data-testid={ testid }
         placeholder={text}
+        min="0"
+        maxLength="8"
       />
   );
 };

@@ -11,34 +11,33 @@ const TBody = () => {
   };
   const renderTBody = () => expenses.map((expense) => {
     const {
-      id, description, method, value, tag, exchangeRates, currency, coin,
+      id, description, method, value, tag, exchangeRates, currency,
     } = expense;
     const { ask, name } = exchangeRates[currency];
     const convertedValue = (value * ask).toFixed(2);
     const cointConverted = name.split('/')[0];
     return (
-      <tbody key={ id }>
+      <tbody className="text-gray-500" key={id}>
         <tr>
-          <td>{description}</td>
-          <td>{tag}</td>
-          <td>{method}</td>
-          <td>{value}</td>
-          <td>{coin}</td>
-          <td>{parseFloat(ask).toFixed(2)}</td>
-          <td>{cointConverted}</td>
-          <td>{convertedValue}</td>
-          <td>Real</td>
-          <td>
+          <td className="px-4 text-center">{description}</td>
+          <td className="px-4 text-center">{tag}</td>
+          <td className="px-4 text-center">{method}</td>
+          <td className="px-4 text-center">{value}</td>
+          <td className="px-4 text-center">{cointConverted}</td>
+          <td className="px-4 text-center">{parseFloat(ask).toFixed(2)}</td>
+          <td className="px-4 text-center">{convertedValue}</td>
+          <td className="px-4 text-center">Real</td>
+          <td className="px-4 text-center">
             <button
               type="button"
-              onClick={ () => removeExpense(id) }
+              onClick={() => removeExpense(id)}
               data-testid="delete-btn"
             >
               Deletar
             </button>
             <button
               type="button"
-              onClick={ () => dispatch(editExpenses(true, id)) }
+              onClick={() => dispatch(editExpenses(true, id))}
               data-testid="edit-btn"
             >
               Editar
