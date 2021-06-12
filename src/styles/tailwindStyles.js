@@ -1,12 +1,14 @@
 const checkInput = (value, error) => {
-  const normalBorder = value.length ? `border-green-300` : `border-green-100`;
-  const errorBorder = 'border-red-300';
+  const normalBorder = value.length
+    ? `border-green-300`
+    : `border-green-100 focus:border-green-300`;
+  
+    const errorBorder = 'border-red-300';
 
   return `
   w-3/5 py-3 px-4 text-md text-gray-600 
   outline-none border-2 ${error ? errorBorder : normalBorder}
   rounded-xl placeholder-gray-300 transition-all 
-  focus:border-green-300
   `;
 };
 

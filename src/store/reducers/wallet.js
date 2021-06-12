@@ -1,6 +1,7 @@
+import { defineState } from 'redux-localstore';
 import actions from '../actions';
 
-const INITIAL_STATE = {
+const DEFAULT_STATE = {
   loading: false,
   error: '',
   currencies: [],
@@ -8,6 +9,8 @@ const INITIAL_STATE = {
   edit: false,
   id: 0,
 };
+
+const INITIAL_STATE = defineState(DEFAULT_STATE)('wallet');
 
 function userWalletReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
