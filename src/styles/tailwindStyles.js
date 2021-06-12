@@ -33,6 +33,9 @@ const styles = {
       text-purple-600 cursor-pointer 
       transition-all hover:underline hover:text-purple-500,
     `,
+    errorMsg: `
+      flex flex-col py-4 px-10 rounded-lg 
+      items-center text-sm text-red-400 bg-red-100`,
   },
   walletStyles: {
     base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
