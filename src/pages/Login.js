@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
@@ -59,7 +59,7 @@ const Login = () => {
         <p>Verifique as informações e tente novamente.</p>
       </div>
     );
-    if (invalidEmail) return renderDiv('Conta')
+    if (invalidEmail) return renderDiv('Conta');
     if (invalidPassword) return renderDiv('Senha');
   };
 
@@ -75,7 +75,6 @@ const Login = () => {
             <input
               className={loginStyles.input(email, invalidEmail)}
               type="email"
-              data-testid="email-input"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
               value={email}
@@ -84,7 +83,6 @@ const Login = () => {
             <input
               className={loginStyles.input(password, invalidPassword)}
               type="password"
-              data-testid="password-input"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               value={password}
@@ -101,7 +99,9 @@ const Login = () => {
 
             <section className={loginStyles.constainerCreateAccount}>
               <p>Não está registrado ainda? </p>
-              <p className={loginStyles.createAccount}>Crie uma Conta</p>
+              <p className={loginStyles.createAccount}>
+                <Link to="/register">Crie uma Conta</Link>
+              </p>
             </section>
           </div>
         </section>

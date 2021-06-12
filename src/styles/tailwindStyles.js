@@ -65,6 +65,24 @@ const styles = {
       outline-none focus:outline-none focus:border-none
       `,
   },
+  registerStyles: {
+    base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
+    container: 'h-4/5 flex shadow-lg',
+    leftContainer:
+      'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-36',
+    rightContainer: `
+    flex flex-col items-center 
+    justify-evenly w-1/2 bg-white rounded p-6
+    `,
+    rightContainerInputs:
+      'flex flex-col items-center justify-around gap-6 w-full',
+    rightContainerButton: `
+    w-3/5 p-3 bg-purple-500 rounded-xl text-md 
+    text-white shadow tracking-tight font-medium 
+    transition-all hover:bg-purple-400 focus:outline-none outline-none
+    `,
+    input: (value, error) => checkInput(value, error),
+  },
 };
 
 export default styles;
