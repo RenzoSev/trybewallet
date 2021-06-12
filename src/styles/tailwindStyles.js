@@ -1,15 +1,14 @@
-const checkLength = (value) => {
-  const result = value.length 
-  ? 'border-green-300' 
-  : 'border-green-100';
+const checkInput = (value, error) => {
+  const normalBorder = value.length ? `border-green-300` : `border-green-100`;
+  const errorBorder = 'border-red-300';
 
   return `
   w-3/5 py-3 px-4 text-md text-gray-600 
-  outline-none border-2 ${result}
+  outline-none border-2 ${error ? errorBorder : normalBorder}
   rounded-xl placeholder-gray-300 transition-all 
   focus:border-green-300
-  `
-}
+  `;
+};
 
 const styles = {
   loginStyles: {
@@ -24,11 +23,16 @@ const styles = {
     leftContainerButton: `
     w-3/5 p-3 bg-purple-500 rounded-xl text-md 
     text-white shadow tracking-tight font-medium 
-    transition-all hover:bg-purple-400 outline:none
+    transition-all hover:bg-purple-400 focus:outline-none outline-none
     `,
-    input: (value) => checkLength(value),
+    input: (value, error) => checkInput(value, error),
     rightContainer:
       'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
+    constainerCreateAccount: 'flex gap-1 text-sm text-gray-600 font-bold',
+    createAccount: `
+      text-purple-600 cursor-pointer 
+      transition-all hover:underline hover:text-purple-500,
+    `,
   },
   walletStyles: {
     base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
