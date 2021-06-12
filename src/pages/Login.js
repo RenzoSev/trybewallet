@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
@@ -52,16 +52,14 @@ const Login = () => {
 
   const checkLogin = () => checkEmail(email) && checkPassword(password);
 
-  const errorMsg = (msg) => {
+  const errorElement = () => {
     const renderDiv = (msg) => (
       <div className={loginStyles.errorMsg}>
         <p>{msg} inválida.</p>
         <p>Verifique as informações e tente novamente.</p>
       </div>
     );
-
-    if (invalidEmail) return renderDiv('Conta');
-
+    if (invalidEmail) return renderDiv('Conta')
     if (invalidPassword) return renderDiv('Senha');
   };
 
@@ -71,17 +69,14 @@ const Login = () => {
         <section className={loginStyles.leftContainer}>
           <TrybeWalletHeader />
 
-          {errorMsg()}
+          {errorElement()}
 
           <div className={loginStyles.leftContainerInputs}>
             <input
               className={loginStyles.input(email, invalidEmail)}
               type="email"
               data-testid="email-input"
-              onChange={(e) => {
-                if (!password) setInvalidEmail(false);
-                setEmail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
               value={email}
             />
@@ -90,10 +85,7 @@ const Login = () => {
               className={loginStyles.input(password, invalidPassword)}
               type="password"
               data-testid="password-input"
-              onChange={(e) => {
-                if (!password) setInvalidPassword(false);
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               value={password}
             />

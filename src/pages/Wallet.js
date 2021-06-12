@@ -14,16 +14,22 @@ const Wallet = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const globalState = useSelector((state) => state);
-  const { user, wallet } = globalState;
+  const { user, wallet, accounts } = globalState;
+
+  const username = accounts.users.find(
+    (userAc) => userAc.email === user.email
+  ).name;
 
   useEffect(() => {
     const getTotalPrice = () => {
-      const totalPriceRedux = wallet.expenses.reduce((acc, expense) => {
-        const { value, currency, exchangeRates } = expense;
-        const { ask } = exchangeRates[currency];
-        const total = acc + ask * value;
-        return total;
-      }, 0).toFixed(2);
+      const totalPriceRedux = wallet.expenses
+        .reduce((acc, expense) => {
+          const { value, currency, exchangeRates } = expense;
+          const { ask } = exchangeRates[currency];
+          const total = acc + ask * value;
+          return total;
+        }, 0)
+        .toFixed(2);
 
       setTotalPrice(totalPriceRedux);
     };
@@ -38,7 +44,7 @@ const Wallet = () => {
           <TrybeWalletHeader />
           <div className="flex gap-12">
             <p className="text-gray-600" data-testid="email-field">
-              {user.email}
+              {`Olá, ${username}!`}
             </p>
             <p className="text-green-500" data-testid="total-field">
               {`Dispesa total: R$${totalPrice} BRL`}
