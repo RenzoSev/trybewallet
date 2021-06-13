@@ -63,6 +63,8 @@ const Register = () => {
     </div>
   );
 
+  const errorMsg = invalidEmail && !registered;
+
   return (
     <main className={registerStyles.base}>
       <section className={registerStyles.container}>
@@ -73,19 +75,19 @@ const Register = () => {
         <section className={registerStyles.rightContainer}>
           <TrybeWalletHeader />
 
-          {invalidEmail && errorElement()}
+          {errorMsg && errorElement()}
           {registered && registerElement()}
 
           <div className={registerStyles.rightContainerInputs}>
             <input
-              className={registerStyles.input(name, invalidEmail)}
+              className={registerStyles.input(name, errorMsg)}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               value={name}
             />
 
             <input
-              className={registerStyles.input(email, invalidEmail)}
+              className={registerStyles.input(email, errorMsg)}
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
@@ -93,7 +95,7 @@ const Register = () => {
             />
 
             <input
-              className={registerStyles.input(password, invalidEmail)}
+              className={registerStyles.input(password, errorMsg)}
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
