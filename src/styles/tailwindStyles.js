@@ -87,6 +87,7 @@ const styles = {
     transition-all hover:bg-purple-400 focus:outline-none outline-none
     `,
     input: (value, error) => checkInput(value, error),
+    eyeToggle: (color) => `absolute left-3/4 text-gray-${color} cursor-pointer`,
     registerMsg: `
       flex flex-col py-4 px-10 rounded-lg 
       items-center text-sm text-green-400 bg-green-100`,

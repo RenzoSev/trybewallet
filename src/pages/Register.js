@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { FaRegEyeSlash, FaEyeSlash } from 'react-icons/fa';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
@@ -23,6 +24,8 @@ const Register = () => {
 
   const [redirect, setRedirect] = useState(false);
   const [registered, setRegistered] = useState(false);
+
+  const [hidePassword, setHidePassword] = useState(true);
 
   const userAccount = {
     id: users.length,
@@ -94,13 +97,27 @@ const Register = () => {
               value={email}
             />
 
-            <input
-              className={registerStyles.input(password, errorMsg)}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              value={password}
-            />
+            <div className="w-full relative flex justify-center items-center">
+              <input
+                className={registerStyles.input(password, errorMsg)}
+                type={hidePassword ? 'password' : 'text'}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                value={password}
+              />
+
+              {hidePassword ? (
+                <FaEyeSlash
+                  className={registerStyles.eyeToggle(500)}
+                  onClick={() => setHidePassword(!hidePassword)}
+                />
+              ) : (
+                <FaRegEyeSlash
+                  className={registerStyles.eyeToggle(300)}
+                  onClick={() => setHidePassword(!hidePassword)}
+                />
+              )}
+            </div>
 
             <div className="w-3/5">
               <p className="leading-4 tracking-wide text-xs text-gray-400">
