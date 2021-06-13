@@ -8,6 +8,7 @@ const DEFAULT_STATE = {
   expenses: [],
   edit: false,
   id: 0,
+  exit: false,
 };
 
 const INITIAL_STATE = defineState(DEFAULT_STATE)('wallet');
@@ -31,6 +32,9 @@ function userWalletReducer(state = INITIAL_STATE, action) {
 
     case actions.DELETE_EXPENSE:
       return { ...state, expenses: action.payload };
+
+    case actions.EXIT_ACCOUNT:
+      return { ...state, exit: !state.exit };
 
     default:
       return state;

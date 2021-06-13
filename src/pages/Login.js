@@ -4,23 +4,22 @@ import { Redirect, Link } from 'react-router-dom';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
-import { userLogin } from '../store/actions/user';
+import { userLogin, userRedirect } from '../store/actions/user';
 import { checkEmail, checkPassword } from '../utils/login';
 
 import walletSvg from '../assets/wallet.svg';
 import styles from '../styles/tailwindStyles';
+import exitAccount from '../store/actions/wallet/exit';
 
 const Login = () => {
   const { loginStyles } = styles;
-  const { users } = useSelector((state) => state.accounts);
+  const { accounts, user } = useSelector((state) => state);
 
   const [email, setEmail] = useState('');
   const [invalidEmail, setInvalidEmail] = useState(false);
 
   const [password, setPassword] = useState('');
   const [invalidPassword, setInvalidPassword] = useState(false);
-
-  const [redirect, setRedirect] = useState(false);
 
   const dispatch = useDispatch();
   const addUser = () => {
@@ -33,23 +32,28 @@ const Login = () => {
   };
 
   const checkUser = () => {
-    const findEmail = users.find((user) => user.email === email);
+    const findEmail = accounts.users.find((user) => user.email === email);
     const findPassword = findEmail?.password === password;
 
     if (findEmail && findPassword) {
       addUser();
-      setRedirect(true);
+      dispatch(userRedirect());
+      dispatch(exitAccount());
       return;
     }
     if (!findEmail) {
       setEmail('');
+      setPassword('');
       setInvalidEmail(true);
+      setInvalidPassword(true);
+      return;
     }
     if (!findPassword) {
       setInvalidEmail(false);
       setInvalidPassword(true);
+      setPassword('');
+      return;
     }
-    setPassword('');
   };
 
   const checkLogin = () => checkEmail(email) && checkPassword(password);
@@ -64,6 +68,10 @@ const Login = () => {
     if (invalidEmail) return renderDiv('Conta');
     if (invalidPassword) return renderDiv('Senha');
   };
+
+  if (user.email) return <Redirect to="/carteira" />;
+
+  if (user.redirect) return <Redirect to="/carteira" />;
 
   return (
     <main className={loginStyles.base}>
@@ -112,8 +120,6 @@ const Login = () => {
           <img src={walletSvg} alt="wallet" />
         </section>
       </section>
-
-      {redirect && <Redirect to="/carteira" />}
     </main>
   );
 };
