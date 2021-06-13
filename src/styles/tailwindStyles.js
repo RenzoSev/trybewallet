@@ -2,8 +2,8 @@ const checkInput = (value, error) => {
   const normalBorder = value.length
     ? `border-green-300`
     : `border-green-100 focus:border-green-300`;
-  
-    const errorBorder = 'border-red-300';
+
+  const errorBorder = 'border-red-300';
 
   return `
   w-3/5 py-3 px-4 text-md text-gray-600 
@@ -12,24 +12,28 @@ const checkInput = (value, error) => {
   `;
 };
 
+const sharedStyles = {
+  base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
+  container: 'h-4/5 flex shadow-lg',
+  sideContainerInputs: 'flex flex-col items-center justify-around gap-6 w-full',
+  button: `
+    w-3/5 p-3 bg-purple-500 rounded-xl text-md 
+    text-white shadow tracking-tight font-medium 
+    transition-all hover:bg-purple-400 focus:outline-none outline-none`,
+};
+
 const styles = {
   loginStyles: {
-    base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
-    container: 'h-4/5 flex shadow-lg',
+    base: sharedStyles.base,
+    container: sharedStyles.container,
     leftContainer: `
     flex flex-col items-center 
     justify-evenly w-1/2 bg-white rounded p-6
     `,
-    leftContainerInputs:
-      'flex flex-col items-center justify-around gap-6 w-full',
-    leftContainerButton: `
-    w-3/5 p-3 bg-purple-500 rounded-xl text-md 
-    text-white shadow tracking-tight font-medium 
-    transition-all hover:bg-purple-400 focus:outline-none outline-none
-    `,
+    leftContainerInputs: sharedStyles.sideContainerInputs,
+    leftContainerButton: sharedStyles.button,
     input: (value, error) => checkInput(value, error),
-    rightContainer:
-      'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
+    rightContainer: 'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
     constainerCreateAccount: 'flex gap-1 text-sm text-gray-600 font-bold',
     createAccount: `
       text-purple-600 cursor-pointer 
@@ -40,7 +44,7 @@ const styles = {
       items-center text-sm text-red-400 bg-red-100`,
   },
   walletStyles: {
-    base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
+    base: sharedStyles.base,
     container: 'h-4/5 flex flex-col shadow-lg bg-white',
     header: 'flex justify-between items-center py-5 px-8',
     input: `
@@ -66,16 +70,15 @@ const styles = {
       `,
   },
   registerStyles: {
-    base: 'h-screen bg-gray-100 flex flex-col justify-center px-20',
-    container: 'h-4/5 flex shadow-lg',
+    base: sharedStyles.base,
+    container: sharedStyles.container,
     leftContainer:
       'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-36',
     rightContainer: `
     flex flex-col items-center 
     justify-evenly w-1/2 bg-white rounded p-6
     `,
-    rightContainerInputs:
-      'flex flex-col items-center justify-around gap-6 w-full',
+    rightContainerInputs: sharedStyles.sideContainerInputs,
     rightContainerButton: `
     w-3/5 p-3 bg-purple-500 rounded-xl text-md 
     text-white shadow tracking-tight font-medium 

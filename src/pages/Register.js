@@ -48,7 +48,7 @@ const Register = () => {
               <p className="leading-4 tracking-wide text-xs text-gray-400">
                 Ao clicar em Cadastre-se, você concorda com nossos Termos,
                 Política de Dados e Política de Cookies. Você poderá receber
-                notificações por SMS e cancelar isso quando quiser
+                notificações por SMS e cancelar isso quando quiser.
               </p>
             </div>
 
