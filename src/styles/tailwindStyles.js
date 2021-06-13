@@ -20,6 +20,9 @@ const sharedStyles = {
     w-3/5 p-3 bg-purple-500 rounded-xl text-md 
     text-white shadow tracking-tight font-medium 
     transition-all hover:bg-purple-400 focus:outline-none outline-none`,
+  errorMsg: `
+      flex flex-col py-4 px-10 rounded-lg 
+      items-center text-sm text-red-400 bg-red-100`,
 };
 
 const styles = {
@@ -33,15 +36,14 @@ const styles = {
     leftContainerInputs: sharedStyles.sideContainerInputs,
     leftContainerButton: sharedStyles.button,
     input: (value, error) => checkInput(value, error),
-    rightContainer: 'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
+    rightContainer:
+      'flex flex-col justify-center bg-purple-400 w-1/2 rounded p-6',
     constainerCreateAccount: 'flex gap-1 text-sm text-gray-600 font-bold',
     createAccount: `
       text-purple-600 cursor-pointer 
       transition-all hover:underline hover:text-purple-500,
     `,
-    errorMsg: `
-      flex flex-col py-4 px-10 rounded-lg 
-      items-center text-sm text-red-400 bg-red-100`,
+    errorMsg: sharedStyles.errorMsg,
   },
   walletStyles: {
     base: sharedStyles.base,
@@ -85,6 +87,10 @@ const styles = {
     transition-all hover:bg-purple-400 focus:outline-none outline-none
     `,
     input: (value, error) => checkInput(value, error),
+    registerMsg: `
+      flex flex-col py-4 px-10 rounded-lg 
+      items-center text-sm text-green-400 bg-green-100`,
+    errorMsg: sharedStyles.errorMsg,
   },
 };
 

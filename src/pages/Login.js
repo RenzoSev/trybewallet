@@ -45,8 +45,10 @@ const Login = () => {
       setEmail('');
       setInvalidEmail(true);
     }
-    if (!findPassword) setInvalidPassword(true);
-
+    if (!findPassword) {
+      setInvalidEmail(false);
+      setInvalidPassword(true);
+    }
     setPassword('');
   };
 

@@ -1,14 +1,67 @@
 import React, { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
-import styles from '../styles/tailwindStyles';
+
 import cofreSvg from '../assets/cofre.svg';
+import styles from '../styles/tailwindStyles';
+import { addAccount } from '../store/actions/accounts';
 
 const Register = () => {
   const { registerStyles } = styles;
 
+  const { users } = useSelector((state) => state.accounts);
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+
+  const [invalidEmail, setInvalidEmail] = useState(false);
+
+  const [redirect, setRedirect] = useState(false);
+  const [registered, setRegistered] = useState(false);
+
+  const userAccount = {
+    id: users.length,
+    name,
+    email,
+    password,
+  };
+
+  const registerUser = () => {
+    const isThereEmail = users.some((user) => user.email === email);
+
+    if (isThereEmail) {
+      setInvalidEmail(true);
+      return;
+    }
+
+    dispatch(addAccount(userAccount));
+    setRegistered(true);
+  };
+
+  const registerElement = () => (
+    <div className={registerStyles.registerMsg}>
+      <p>Conta cadastrada com sucesso!</p>
+      <p>Você será redirecionado para a página de login.</p>
+    </div>
+  );
+
+  const redirectToLogin = () => {
+    setTimeout(() => {
+      if (!redirect) setRedirect(true);
+    }, 2000);
+  };
+
+  const errorElement = () => (
+    <div className={registerStyles.errorMsg}>
+      <p>O e-mail inserido já está sendo utilizado.</p>
+      <p>Verifique suas informações e tente novamente.</p>
+    </div>
+  );
 
   return (
     <main className={registerStyles.base}>
@@ -20,16 +73,19 @@ const Register = () => {
         <section className={registerStyles.rightContainer}>
           <TrybeWalletHeader />
 
+          {invalidEmail && errorElement()}
+          {registered && registerElement()}
+
           <div className={registerStyles.rightContainerInputs}>
             <input
-              className={registerStyles.input(name, false)}
+              className={registerStyles.input(name, invalidEmail)}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
-              value={email}
+              value={name}
             />
 
             <input
-              className={registerStyles.input(email, false)}
+              className={registerStyles.input(email, invalidEmail)}
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
@@ -37,7 +93,7 @@ const Register = () => {
             />
 
             <input
-              className={registerStyles.input(password, false)}
+              className={registerStyles.input(password, invalidEmail)}
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
@@ -56,13 +112,16 @@ const Register = () => {
               className={registerStyles.rightContainerButton}
               type="button"
               disabled={false}
-              onClick={() => console.log('oi!')}
+              onClick={registerUser}
             >
               Cadastra-se
             </button>
           </div>
         </section>
       </section>
+
+      {registered && redirectToLogin()}
+      {redirect && <Redirect to="/" />}
     </main>
   );
 };

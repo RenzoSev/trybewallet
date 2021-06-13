@@ -8,7 +8,7 @@ const DEFAULT_STATE = {
       email: 'admin@admin.com',
       password: '123456',
       name: 'Renzo Sevilha',
-    }
+    },
   ],
 };
 
@@ -17,7 +17,7 @@ const INITIAL_STATE = defineState(DEFAULT_STATE)('accounts');
 function userAccountReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
     case actions.ADD_ACCOUNT:
-      return state;
+      return {...state, users: [ ...state.users, action.payload ] };
   
     default:
       return state;
