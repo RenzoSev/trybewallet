@@ -46,4 +46,11 @@ npm start
 
 ## Presentation
 ### 🖼️ Images 🖼️
+![login](https://user-images.githubusercontent.com/73757018/121916987-078dcd00-cd0b-11eb-85b5-f42d128eef68.png)
+![register](https://user-images.githubusercontent.com/73757018/121916992-08266380-cd0b-11eb-8f8c-45689491a3be.png)
+![wallet](https://user-images.githubusercontent.com/73757018/121916994-08befa00-cd0b-11eb-9f97-583a604bbe5c.png)
+
 ### 🎥 Video 🎥
+https://user-images.githubusercontent.com/73757018/121917069-1c6a6080-cd0b-11eb-8fe9-eadf0e113f22.mp4
+
+
