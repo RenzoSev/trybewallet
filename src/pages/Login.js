@@ -13,7 +13,7 @@ import exitAccount from '../store/actions/wallet/exit';
 
 const Login = () => {
   const { loginStyles } = styles;
-  const { accounts, user } = useSelector((state) => state);
+  const { accounts, user, wallet } = useSelector((state) => state);
 
   const [email, setEmail] = useState('');
   const [invalidEmail, setInvalidEmail] = useState(false);
@@ -38,7 +38,7 @@ const Login = () => {
     if (findEmail && findPassword) {
       addUser();
       dispatch(userRedirect());
-      dispatch(exitAccount());
+      if (wallet.exit) dispatch(exitAccount());
       return;
     }
     if (!findEmail) {
