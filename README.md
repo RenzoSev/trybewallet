@@ -4,6 +4,7 @@ This project is a JavaScript built-in currency conversion spend control portfoli
 which was a project proposed by Trybe.
 <br/>
 The main technologies are Redux, ReactJS and TailwindCSS.
+<br/>
 You can know more about Trybe [clicking here!](https://www.betrybe.com/)
 
 ## Author
@@ -31,6 +32,7 @@ npm start
   1. React Redux
 * Redux
   1. Redux LocalStore
+  1. Redux Thunk
 * Eslint
 * TailwindCSS
 
@@ -38,6 +40,9 @@ npm start
 1. 😎 User system: __Create your account and save your wallet__.
 1. 🌎 Global store: __Redux will manage your application__.
 1. 🥷 Show/hide: __You can see your password while you are typing it__
+
+## References
+1. [Images](https://undraw.co)
 
 ## Presentation
 ### 🖼️ Images 🖼️
