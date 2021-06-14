@@ -26,8 +26,6 @@ const Wallet = () => {
     (userAc) => userAc.email === user.email
   ).name;
 
-  console.log(wallet.exit);
-
   useEffect(() => {
     const getTotalPrice = () => {
       const totalPriceRedux = wallet.expenses

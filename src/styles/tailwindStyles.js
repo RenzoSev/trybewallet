@@ -59,6 +59,7 @@ const styles = {
     text-gray-100 appearance-none text-sm bg-purple-400 outline-none cursor-pointer
     `,
     form: 'flex justify-between py-5 pl-5 pr-8 border-b border-t',
+    editform: 'bg-gray-300 flex justify-between py-5 pl-5 pr-8 border-b border-t',
     button: `
     bg-green-400 text-gray-100 px-5 font-bold outline-none focus:outline-none
     rounded-lg hover:bg-green-300 transition-all hover:text-gray-50 shadow

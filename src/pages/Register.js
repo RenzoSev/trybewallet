@@ -6,9 +6,11 @@ import { FaRegEyeSlash, FaEyeSlash } from 'react-icons/fa';
 
 import TrybeWalletHeader from '../components/TrybeWalletHeader';
 
+import { checkEmail, checkPassword } from '../utils/login';
+import { addAccount } from '../store/actions/accounts';
+
 import cofreSvg from '../assets/cofre.svg';
 import styles from '../styles/tailwindStyles';
-import { addAccount } from '../store/actions/accounts';
 
 const Register = () => {
   const { registerStyles } = styles;
@@ -67,6 +69,8 @@ const Register = () => {
   );
 
   const errorMsg = invalidEmail && !registered;
+
+  const checkLogin = () => checkEmail(email) && checkPassword(password);
 
   return (
     <main className={registerStyles.base}>
@@ -130,7 +134,7 @@ const Register = () => {
             <button
               className={registerStyles.rightContainerButton}
               type="button"
-              disabled={false}
+              disabled={!checkLogin()}
               onClick={registerUser}
             >
               Cadastra-se
