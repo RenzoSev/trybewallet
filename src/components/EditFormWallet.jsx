@@ -8,13 +8,20 @@ import elements from '../services/inputs';
 import { deleteExpense, editExpenses } from '../store/actions/wallet/expense';
 import { fetchCurrency } from '../store/actions/wallet/currency';
 
+import styles from '../styles/tailwindStyles';
+
 const EditFormWallet = () => {
+  const { walletStyles } = styles;
+  const { inputs, selects, options } = elements;
+  
   const dispatch = useDispatch();
+  
   const globalState = useSelector((state) => state);
   const { wallet } = globalState;
-  const { inputs, selects, options } = elements;
+  
   const initialExpense = { ...wallet.expenses[wallet.id] };
   const [expense, setExpense] = useState(initialExpense);
+  
   const updatedOptions = [wallet.currencies, ...options];
 
   const editExpense = () => {
@@ -38,19 +45,29 @@ const EditFormWallet = () => {
   }, []);
 
   return (
-    <form>
-      {inputs.map((input) => (
-        <LabelInput key={input.control} input={input} getExpense={getExpense} />
-      ))}
-      {selects.map((select, index) => (
-        <LabelSelect
-          key={select.control}
-          select={select}
-          options={updatedOptions[index]}
-          getExpense={getExpense}
-        />
-      ))}
-      <button type="button" onClick={() => editExpense()}>
+    <form className={walletStyles.editform}>
+      <div className="flex justify-around">
+        {inputs.map((input) => (
+          <LabelInput
+            key={input.control}
+            input={input}
+            getExpense={getExpense}
+          />
+        ))}
+        {selects.map((select, index) => (
+          <LabelSelect
+            key={select.control}
+            select={select}
+            options={updatedOptions[index]}
+            getExpense={getExpense}
+          />
+        ))}
+      </div>
+      <button
+        className={walletStyles.button}
+        type="button"
+        onClick={() => editExpense()}
+      >
         Editar despesa
       </button>
     </form>
