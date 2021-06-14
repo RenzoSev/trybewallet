@@ -39,7 +39,7 @@ npm start
 ## Features
 1. 😎 User system: __Create your account and save your wallet__.
 1. 🌎 Global store: __Redux will manage your application__.
-1. 🥷 Show/hide: __You can see your password while you are typing it__
+1. 🥷 Show/hide: __You can see your password while you are typing it__.
 
 ## References
 1. [Images](https://undraw.co)
